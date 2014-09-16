@@ -1,19 +1,19 @@
 all: anno.js anno.css
 
-anno.js: src/anno.litcoffee
-	coffee --bare --literate -o . src/anno.litcoffee
+dist/anno.js: src/Anno.litcoffee
+	coffee --bare --literate -o dist src/Anno.litcoffee
 
-anno.css: src/anno.less
-	lessc src/anno.less > anno.css
+dist/anno.css: src/anno.less
+	lessc src/anno.less > dist/anno.css
 
 docco: src/*.litcoffee
 	docco -o ./docco src/*.litcoffee
 
-anno.min.js: anno.js bower_components/scrollintoview/jquery.scrollintoview.js
-	uglifyjs anno.js bower_components/scrollintoview/jquery.scrollintoview.js --compress --mangle > anno.min.js
+# dist/anno.min.js: anno.js bower_components/scrollintoview/jquery.scrollintoview.js
+# 	uglifyjs anno.js bower_components/scrollintoview/jquery.scrollintoview.js --compress --mangle > anno.min.js
 
-anno.min.css: anno.css
-	lessc --clean-css anno.css > anno.min.css
+# anno.min.css: anno.css
+# 	lessc --clean-css anno.css > anno.min.css
 
 gzip: anno.min.js anno.min.css
 	gzip --to-stdout --best --keep anno.min.js > anno.min.js.gz
