@@ -10,7 +10,7 @@ AnnoButton
       else
         root.AnnoButton = factory root.$
       return
-    ) @, ($) ->
+    ) window, ($) ->
 
       class AnnoButton
 

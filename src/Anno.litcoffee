@@ -11,13 +11,15 @@ The following Universal Module Definition allows consumers to simply include
 
     ((root, factory) ->
       if typeof define is 'function' and define.amd
-        define ['jquery', 'annobutton'], factory
+        define ['jquery', './AnnoButton'], factory
       else if typeof exports is 'object'
-        module.exports = factory require('jquery'), require('annobutton')
+        module.exports = factory require('jquery'), require('./AnnoButton')
       else
         root.Anno = factory root.$, root.AnnoButton
       return
-    ) @, ($, AnnoButton) ->
+    ) window, ($, AnnoButton) ->
+
+      console.log 'initialized', $, AnnoButton
 
       class Anno
 

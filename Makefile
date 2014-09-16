@@ -1,7 +1,10 @@
-all: anno.js anno.css
+all: dist/Anno.js dist/AnnoButton.js dist/anno.css
 
-dist/anno.js: src/Anno.litcoffee
+dist/Anno.js: src/Anno.litcoffee
 	coffee --bare --literate -o dist src/Anno.litcoffee
+
+dist/AnnoButton.js: src/AnnoButton.litcoffee
+	coffee --bare --literate -o dist src/AnnoButton.litcoffee
 
 dist/anno.css: src/anno.less
 	lessc src/anno.less > dist/anno.css
